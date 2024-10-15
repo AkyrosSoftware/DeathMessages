@@ -1,7 +1,7 @@
 plugins {
     `java-library`
     `maven-publish`
-    id("io.github.goooler.shadow") version "8.1.7"
+    id("com.gradleup.shadow") version "8.3.2"
     id("com.willfp.libreforge-gradle-plugin") version "1.0.2"
 }
 
@@ -27,7 +27,7 @@ repositories {
 allprojects {
     apply(plugin = "java")
     apply(plugin = "maven-publish")
-    apply(plugin = "io.github.goooler.shadow")
+    apply(plugin = "com.gradleup.shadow")
 
     repositories {
         mavenCentral()

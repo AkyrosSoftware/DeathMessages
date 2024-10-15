@@ -26,7 +26,7 @@
 Compatibility
 
 - Support Java 8 and higher
-- Support 1.12.2 - Latest Minecraft version (1.21)
+- Support 1.12.2 - Latest Minecraft version (1.21.1)
 - Compatible with Spigot / Paper / Paper Forks / Forge+Bukkit Hybrid Server
 - Multi Plugins Support
 - Folia Support
@@ -39,6 +39,17 @@ Compatibility
 ## Contact
 
 - 📫 Discord: `dreeam___` | QQ: `2682173972`
+
+## Translations
+Please feel free to contribute or modify existing translations if they are not right.
+### Contributors
+
+- [Axtazer](https://github.com/Axtazer) (French Translation)
+- [Santyxs](https://github.com/Santyxs) (Spanish Translation)
+
+### Contribute/Download
+
+- [Crowndin - DeathMessages](https://crowdin.com/project/deathmessage)
 
 ## Building
 

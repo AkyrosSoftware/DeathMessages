@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -92,9 +93,9 @@ public class Util {
 
     public static void getExplosionNearbyEffected(Player p, Block b) {
         List<UUID> effected = new ArrayList<>();
-        List<Entity> getNearby = new ArrayList<>(isNewerThan(12, 0)
-                ? b.getWorld().getNearbyEntities(BoundingBox.of(b).expand(100))
-                : b.getWorld().getNearbyEntities(b.getLocation(), 100, 100, 100));
+        List<Entity> getNearby = new ArrayList<>(isNewerAndEqual(13, 0)
+                ? b.getWorld().getNearbyEntities(BoundingBox.of(b).expand(24)) // TODO: make it configurable
+                : b.getWorld().getNearbyEntities(b.getLocation(), 24, 24, 24));
 
         getNearby.forEach(ent -> {
                     if (ent instanceof Player) {
@@ -120,6 +121,23 @@ public class Util {
         new ExplosionManager(p.getUniqueId(), b.getType(), b.getLocation(), effected);
         DMBlockExplodeEvent explodeEvent = new DMBlockExplodeEvent(p, b);
         Bukkit.getPluginManager().callEvent(explodeEvent);
+    }
+
+    // The simpler and better version of common-lang's RandomStringUtils#randomNumeric
+    public static String randomNumeric(int length) {
+        if (length <= 0) {
+            throw new IllegalArgumentException("Length must be greater than zero.");
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < length; i++) {
+            // Bound range 0~9
+            int digit = ThreadLocalRandom.current().nextInt(10);
+            sb.append(digit);
+        }
+
+        return sb.toString();
     }
 
     /*
